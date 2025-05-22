@@ -4,6 +4,17 @@ import profileImage from "../assets/awin1.png";
 import aboutImage from "../assets/awin3.png";
 import initScrollAnimation from "../utils/scrollanimation";
 import Footer from "./Footer"; // Ensure the path is correct
+import certificate1 from "../assets/Certificate1.png";
+import certificate2 from "../assets/Certificate2.png";
+import certificate3 from "../assets/SAP1.png";
+import project1 from "../assets/Race.png";
+import project2 from "../assets/png1.png";
+import project3 from "../assets/photobooth.png";
+import project4 from "../assets/kyoto.png";
+import project5 from "../assets/Inventory.png";
+import project6 from "../assets/API.png";
+
+
 
 // Swiper Imports
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -13,9 +24,11 @@ import "swiper/css/autoplay";
 
 // Import your logo images
 import logo1 from "../assets/logo1.png";
-import logo2 from "../assets/logo1.png";
-import logo3 from "../assets/logo1.png";
-import logo4 from "../assets/logo1.png";
+import logo2 from "../assets/B.png";
+import logo3 from "../assets/D.png";
+import logo4 from "../assets/A.png";
+import logo5 from "../assets/C.png";
+import logo6 from "../assets/2.png";
 
 function Home() {
   useEffect(() => {
@@ -59,8 +72,13 @@ function Home() {
 
   const scrollToContact = () => {
     const contactSection = document.getElementById("Contact");
-    contactSection.scrollIntoView({ behavior: "smooth" });
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      console.warn("Contact section not found!");
+    }
   };
+  
 
   return (
     <div>
@@ -68,9 +86,9 @@ function Home() {
       <div className="hero" id="Home">
         <div className="hero-content fade-up">
           <h3>Hi, I'm Awin</h3>
-          <h1 className="typing-effect">IT & Sales Associate</h1>
+          <h1 className="typing-effect">Freelance Web Developer</h1>
           <p>
-            An IT professional, sales expert, and web developer who turns ideas into digital solutions. Whether you need a high-performing website or a tech solution to boost your business, I can help you make it happen.
+           I'm a freelance web developer who builds clean, responsive websites tailored to your needs—whether it's for business, personal use, or anything in between.
           </p>
           
           {/* Buttons Container */}
@@ -81,11 +99,11 @@ function Home() {
             >
               Let's Connect!
             </button>
-            <a href="https://awincodey.github.io/my-portfolio/AWIN.pdf">
-              <button className="cta-button download-button">
-                Download CV 📄
-              </button>
-            </a>
+<a href="AWIN.pdf" download>
+  <button className="cta-button download-button">
+    Download CV 📄
+  </button>
+</a>
           </div>
         </div>
         
@@ -103,7 +121,7 @@ function Home() {
           <div className="About-text fade-up">
             <h1>👋 Hello, I'm Awin!</h1>
             <p>
-              I'm an IT professional and passionate Front-End Web Developer who brings designs to life using clean, responsive, and user-friendly code. With a strong foundation in HTML, CSS, JavaScript, and modern frameworks, I love creating websites that are not just visually appealing but also functional and optimized for performance.
+              I'm an IT professional and passionate Web Developer who brings designs to life using clean, responsive, and user-friendly code. With a strong foundation in HTML, CSS, JavaScript, and modern frameworks, I love creating websites that are not just visually appealing but also functional and optimized for performance.
             </p>
 
             <p>
@@ -117,6 +135,111 @@ function Home() {
           </div>
         </div>
       </div>
+
+ <div className="projects-section fade-up" id="Certifications">
+  <h1 className="section-title fade-up">Seminars & Certifications</h1>
+  <div className="project-grid">
+    {[
+      {
+        image: certificate1,
+        title: "Network Foundations",
+        org: "Huawei Talent",
+        date: "Completed: June 28, 2022",
+        portrait: true,
+      },
+      {
+        image: certificate2,
+        title: "Database Foundations",
+        org: "Oracle Academy",
+        date: "Completed: January 25, 2022",
+        portrait: true,
+      },
+      {
+        image: certificate3,
+        title: "SAP Business One",
+        org: "SAP Basic (Logistics & Financials)",
+        date: "Completed: June 6, 2022",
+        portrait: true,
+      },
+      {
+        image: certificate1,
+        title: "Service Operations Using ITIL Foundations",
+        org: "",
+        date: "Completed: June 24, 2024",
+        portrait: true,
+      },
+    ].map((cert, i) => (
+      <div className="project-card" key={i}>
+        <div className="project-img-wrapper">
+                    <img
+            src={cert.image}
+            alt={cert.title}
+            className={cert.portrait ? "portrait" : ""}
+          />
+          <div className="project-overlay">
+            <p>
+              <strong>{cert.org}</strong><br />
+              {cert.date}
+            </p>
+          </div>
+        </div>
+        <h3 className="project-title">{cert.title}</h3>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+<div className="projects-section fade-up" id="Projects">
+  <h1 className="section-title fade-up">My Projects</h1>
+  <div className="project-grid">
+    {[
+      {
+        image: project1,
+        title: "Typing Race Game",
+        desc: "A C# Windows Forms game where users type falling words to move a car forward. Includes laps and speed boosts.",
+      },
+      {
+        image: project2,
+        title: "Barangay VAWC MIS",
+        desc: "A web system for generating VAWC reports and inserting digital signatures. Built with Laravel PHP and JS.",
+      },
+      {
+        image: project3,
+        title: "Photo Booth Website",
+        desc: "A React web app where users can take, decorate, and download photos.",
+      },
+      {
+        image: project4,
+        title: "CoffeeShop Website",
+        desc: "A static website for a coffee shop with stylish menu, gallery, and contact form.",
+      },
+      {
+        image: project5,
+        title: "Inventory Web System",
+        desc: "Inventory system to manage stock and order history. Built with PHP and JS.",
+      },
+      {
+        image: project6,
+        title: "Thirdparty API Webapp",
+        desc: "A dynamic PHP/JS web app fetching and displaying real-time data via APIs.",
+      },
+    ].map((proj, i) => (
+      <div className="project-card" key={i}>
+        <div className="project-img-wrapper">
+          <img src={proj.image} alt={proj.title} />
+          <div className="project-overlay">
+            <p>{proj.desc}</p>
+          </div>
+        </div>
+        <h3 className="project-title">{proj.title}</h3>
+      </div>
+    ))}
+  </div>
+</div>
+
+
+
 
       {/* 🔥 Logo Carousel Section (Auto-Loop) */}
       <div className="carousel-section">
@@ -135,6 +258,8 @@ function Home() {
           <SwiperSlide><img src={logo2} alt="Logo 2" className="carousel-logo" /></SwiperSlide>
           <SwiperSlide><img src={logo3} alt="Logo 3" className="carousel-logo" /></SwiperSlide>
           <SwiperSlide><img src={logo4} alt="Logo 4" className="carousel-logo" /></SwiperSlide>
+          <SwiperSlide><img src={logo5} alt="Logo 5" className="carousel-logo" /></SwiperSlide>
+          <SwiperSlide><img src={logo6} alt="Logo 6" className="carousel-logo" /></SwiperSlide>
         </Swiper>
       </div>
 

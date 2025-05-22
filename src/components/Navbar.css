@@ -55,3 +55,57 @@
   color: white;
   text-shadow: 2px 2px 30px rgba(255, 255, 255, 0.8); /* White glow effect */
 }
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  padding-right: 15%;
+  height: 25px;
+  cursor: pointer;
+}
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+/* Show menu toggle in mobile view */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+  .menu-toggle:active {
+    transform: scale(1.1); /* Slight zoom effect when clicked */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+    top: 38px;
+    left: 50%;
+    background-color: rgba(31, 30, 30, 0.747);
+    text-align: 5px;
+    border-radius: 10px;
+    
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+  }
+
+  .nav-links li a {
+    font-size: 20px;
+  }
+}

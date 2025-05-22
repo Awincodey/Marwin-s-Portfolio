@@ -53,12 +53,15 @@
   
   @media (max-width: 768px) {
     .footer-content p {
-      font-size: 1rem;
-    }
-  
-    .social-links {
-      flex-direction: column;
-      gap: 10px;
-    }
+    font-size: 0.9rem; /* Smaller font size for very small screens */
+  }
+
+  .social-links a {
+    font-size: 1rem; /* Slightly smaller social media icon size */
+  }
+
+  .social-links {
+    gap: 8px; /* Adjust spacing for small screens */
   }
   
+}

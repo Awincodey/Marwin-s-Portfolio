@@ -55,7 +55,7 @@
     width: 0; /* Start with 0 width */
     overflow: hidden;
     white-space: nowrap;
-    animation: typing 5s steps(20) 1s infinite, blink-caret 0.75s step-end infinite;
+    animation: typing 5s steps(35) 1s infinite, blink-caret 0.75s step-end infinite;
   }
   
   @keyframes typing {
@@ -63,7 +63,7 @@
       width: 0; /* Start typing from the beginning */
     }
     100% {
-      width: 19ch; /* Exact length of "I'm a Web Designer" */
+      width: 23ch; /* Exact length of "I'm a Web Designer" */
     }
   }
   
@@ -121,24 +121,85 @@
   
   /* Make buttons responsive */
   @media (max-width: 768px) {
-    .hero-buttons {
-      flex-direction: column; /* Stack buttons on mobile */
-      align-items: center;
-    }
-    
-    .cta-button {
-      width: 100%; /* Full width for better mobile UI */
-    }
-    
-    .hero-content {
+    .hero {
+      flex-direction: column;
+      padding: 2rem 1rem;
+      height: auto;
       text-align: center;
     }
-    
+  
+    .hero-image {
+      order: -1; /* Move image to the top */
+      max-width:40%;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+      padding-top: 60px;
+    }
+  
     .hero-image img {
-      width: 200px;
-      height: 200px;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+    
+  
+    .hero-content {
+      width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+    .hero-content h1 {
+      font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    }
+  
+    .hero-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+      padding: 0 1rem 20px;
+    }
+
+    .typing-effect {
+      display: inline-block;
+      font-size: 1.5rem;
+      display: inline-block;
+      width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid white;
+      animation: typing 5s steps(20) 1s infinite, blink-caret 0.75s step-end infinite;
+      text-align: left; /* ← ito ang sikreto para magsimula sa kaliwa */
+      padding-right: 5%;
+    }
+  
+    .hero-buttons {
+      display: flex;
+      flex-direction: row; /* side-by-side buttons */
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .cta-button {
+      padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    white-space: nowrap;
     }
   }
+
+  
   
   /* ABOUT */
 
@@ -207,6 +268,70 @@
   color: #d1d1d1;
   letter-spacing: 0.6px;
   margin-bottom: 1.5rem;
+}
+
+/* Responsiveness for Devices */
+
+/* For tablets (iPads, etc.) */
+@media (max-width: 1024px) {
+  .About-content {
+    flex-direction: column; /* Stack image and text */
+    gap: 2rem;
+  }
+
+  .About-image img {
+    max-width: 300px; /* Smaller image size on tablet */
+  }
+
+  .About-text h1 {
+    font-size: 2.5rem; /* Adjust font size */
+  }
+
+  .About-text p {
+    font-size: 1.1rem; /* Adjust paragraph font size */
+  }
+}
+
+/* For phones (Mobile devices) */
+@media (max-width: 768px) {
+  .About-content {
+    width: 90%; /* Increase the width for small screens */
+  }
+
+  .About-image img {
+    max-width: 250px; /* Further reduce image size on smaller screens */
+  }
+
+  .About-text {
+    padding: 1rem; /* Less padding on mobile */
+  }
+
+  .About-text h1 {
+    font-size: 2rem; /* Smaller title font size on mobile */
+  }
+
+  .About-text p {
+    font-size: 1rem; /* Adjust paragraph font size for mobile */
+  }
+}
+
+/* For small mobile screens */
+@media (max-width: 480px) {
+  .About-text h1 {
+    font-size: 1.8rem; /* Even smaller font for very small screens */
+  }
+
+  .About-text p {
+    font-size: 0.9rem; /* Adjust paragraph font size */
+  }
+
+  .About-content {
+    width: 95%; /* Make the content fill almost the entire width */
+  }
+
+  .About-image img {
+    max-width: 220px; /* Further reduce image size on very small screens */
+  }
 }
 
 /* Details Styling */
@@ -296,19 +421,6 @@
   transform: scale(1.05);
 }
 
-
-/* Fade-up Animation */
-.fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Logo Carousel Section */
 .carousel-section {
   width: 100%;
@@ -318,6 +430,8 @@
   padding: 5px 0;
   background: #121212;
   padding-bottom: 5%;
+  padding-top: 55px;
+
 }
 
 .carousel-logo {
@@ -325,23 +439,201 @@
   height: auto;
   display: block;
   margin: auto;
-  filter: grayscale(50%);
   transition: transform 0.1s ease-in-out, filter 0.2s ease-in-out;
 }
 
 .carousel-logo:hover {
   transform: scale(1.0);
-  filter: grayscale(0%);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .carousel-logo {
+    width: 80px; /* Smaller logos on mobile */
+    margin: 5px; /* Reduce margin for smaller screens */
+  }
+}
+
+/* Tablet Responsiveness */
+@media (max-width: 1024px) {
+  .carousel-logo {
+    width: 90px; /* Slightly smaller logos for tablets */
+    margin: 8px; /* Adjust margin for tablets */
+  }
+}
+
+/* Very Small Screens (Phones under 480px) */
+@media (max-width: 480px) {
+  .carousel-logo {
+    width: 70px; /* Smaller logos for very small screens */
+    margin: 3px; /* Adjust margin for better spacing */
+  }
+}
+
+/*Certifications*/
+
+.certifications-section {
+  padding: 60px 20px;
+  background-color: #121212;
+  color: #ffffff;
+  text-align: center;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 3rem;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cert-card {
+  background-color: #1e1e1e;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(40, 39, 39, 0.15);
+  transition: transform 0.4s ease-in-out;
+  
+}
+.cert-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.cert-card:hover {
+  transform: scale(1.05);
+}
+
+.cert-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.cert-org {
+  font-style: italic;
+  margin-bottom: 8px;
+  color: #cccccc;
+}
+
+.cert-date {
+  color: #999999;
+  font-size: 0.9rem;
 }
 
 
 .fade-up {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
 }
 
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.project-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+}
+
+/* Portrait-specific styles */
+.project-img-wrapper img.portrait {
+  object-fit: contain;
+  width: auto;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+
+/* MY PROJECTS*/
+
+.projects-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.7rem;
+  margin-bottom: 60px;
+  font-weight: 500px;
+  color: white;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.project-card {
+  position: relative;
+  background: #1c1c1c;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(246, 249, 248, 0.2);
+}
+
+.project-img-wrapper {
+  position: relative;
+  height: 180px;
+}
+
+.project-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.project-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  color: #e6e6e6;
+  opacity: 0;
+  padding: 20px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.project-img-wrapper:hover .project-overlay {
+  opacity: 1;
+}
+
+.project-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 16px;
 }
